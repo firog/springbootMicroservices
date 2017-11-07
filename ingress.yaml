@@ -1,0 +1,20 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: backend-ingress
+spec:
+  rules:
+  - http:
+      paths:
+      - path: /
+        backend:
+          serviceName: nginx
+          servicePort: 80
+      - path: /store/*
+        backend:
+          serviceName: storeservice
+          servicePort: 8082
+      # - path: /customer
+      #   backend:
+      #     serviceName: customerservice
+      #     servicePort: 8081

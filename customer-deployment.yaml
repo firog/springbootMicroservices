@@ -1,0 +1,25 @@
+apiVersion: v1
+kind: ReplicationController
+metadata:
+  name: customer-controller
+  labels:
+    name: microcustomer
+#    visualize: "true"
+spec:
+  replicas: 1
+  selector:
+    name: microcustomer
+  template:
+    metadata:
+      labels:
+#        visualize: "true"
+        name: microcustomer
+        app: backend
+        uses: customer-service
+    spec:
+      containers:
+        - name: microcustomer
+          image: firog/microcustomerspring
+          ports:
+            - name: backend
+              containerPort: 8081

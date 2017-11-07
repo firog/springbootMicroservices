@@ -1,0 +1,17 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: storeservice
+  labels:
+    name: storeservice
+    app: backend
+    visualize: "true"
+    uses: microstore
+spec:
+  type: NodePort
+  selector:
+    name: microstore
+  ports:
+    - protocol: TCP
+      port: 8082
+      targetPort: 8082

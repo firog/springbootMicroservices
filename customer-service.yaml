@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: customer-service
+  labels:
+    name: customerservice
+    app: backend
+    # visualize: "true"
+spec:
+  type: NodePort
+  selector:
+    name: microcustomer
+  ports:
+    - protocol: TCP
+      port: 8081

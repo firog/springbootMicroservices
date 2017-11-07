@@ -1,0 +1,25 @@
+apiVersion: v1
+kind: ReplicationController
+metadata:
+  name: store-controller
+  labels:
+    name: microstore
+    visualize: "true"
+spec:
+  replicas: 1
+  selector:
+    name: microstore
+  template:
+    metadata:
+      labels:
+        visualize: "true"
+        name: microstore
+        app: backend
+        uses: store-service
+    spec:
+      containers:
+        - name: microstore
+          image: firog/microstorespring
+          ports:
+            - name: backend
+              containerPort: 8082

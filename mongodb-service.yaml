@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: mongodb-service
+  labels:
+    name: mongodb
+    app: nosqldb
+    visualize: "true"
+spec:
+  ports:
+    - protocol: TCP
+      port: 27017
+      targetPort: mongo
+  selector:
+    name: mongodb
