@@ -1,7 +1,9 @@
 apiVersion: apps/v1beta1
 kind: Deployment
 metadata:
-  name: nginx-deployment
+  name: nginx
+  labels:
+    name: nginx
 spec:
   replicas: 2
   template:
