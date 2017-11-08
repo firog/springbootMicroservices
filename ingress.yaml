@@ -14,7 +14,7 @@ spec:
         backend:
           serviceName: storeservice
           servicePort: 8082
-      # - path: /customer
-      #   backend:
-      #     serviceName: customerservice
-      #     servicePort: 8081
+      - path: /customer/*
+        backend:
+          serviceName: customerservice
+          servicePort: 8081

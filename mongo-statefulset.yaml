@@ -1,0 +1,35 @@
+apiVersion: apps/v1beta1
+kind: StatefulSet
+metadata:
+  name: mongodb-stateful
+spec:
+  selector:
+    matchLabels:
+      name: mongodb # has to match .spec.template.metadata.labels
+  serviceName: "mongodb"
+  replicas: 3 # by default is 1
+  template:
+    metadata:
+      labels:
+        name: mongodb # has to match .spec.selector.matchLabels
+    spec:
+      terminationGracePeriodSeconds: 10
+      containers:
+      - name: mongo
+        image: mongo
+        ports:
+        - name: mongodb
+          containerPort: 27017
+          hostPort: 27017
+        volumeMounts:
+        - name: mongodb
+          mountPath: /data/db
+  volumeClaimTemplates:
+  - metadata:
+      name: mongodb
+    spec:
+      accessModes: [ "ReadWriteOnce" ]
+      storageClassName: fast
+      resources:
+        requests:
+          storage: 5Gi

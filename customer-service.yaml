@@ -1,11 +1,12 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: customer-service
+  name: customerservice
   labels:
     name: customerservice
     app: backend
-    # visualize: "true"
+    visualize: "true"
+    uses: microstore
 spec:
   type: NodePort
   selector:
@@ -13,3 +14,4 @@ spec:
   ports:
     - protocol: TCP
       port: 8081
+      targetPort: 8081

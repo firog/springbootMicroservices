@@ -4,7 +4,7 @@ metadata:
   name: customer-controller
   labels:
     name: microcustomer
-#    visualize: "true"
+    visualize: "true"
 spec:
   replicas: 1
   selector:
@@ -12,7 +12,7 @@ spec:
   template:
     metadata:
       labels:
-#        visualize: "true"
+        visualize: "true"
         name: microcustomer
         app: backend
         uses: customer-service
